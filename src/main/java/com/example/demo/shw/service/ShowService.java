@@ -20,6 +20,4 @@ public interface ShowService {
 	
 	public int delete(Show show);
 
-	public int crawling(String url);
-	
 }

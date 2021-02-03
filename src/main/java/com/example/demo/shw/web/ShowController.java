@@ -43,21 +43,6 @@ public class ShowController {
     public Show detail(@PathVariable String showNum) {
         return showService.getShowById(showNum);
     }
-    @GetMapping("/shows/crawling/{site}")
-    public Map<?,?> crawling(@PathVariable String site){
-        var map = px.hashmap();
-        var count = showService.count();
-        if(count == 0) {
-            switch(site) {
-                case "sac":
-                map.put("count", showService.crawling("http://www.sac.or.kr/SacHome/exhibit/detail?searchSeq=44245"));
-                break;
-            }
-        }else {
-            map.put("count", count);
-        }
-        return map;
-    }
     @PutMapping("/shows")
     public Map<?,?> update(@RequestBody Show show){
         printer.accept("수정할 데이터: "+show.toString());
