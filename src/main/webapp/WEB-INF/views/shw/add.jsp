@@ -20,6 +20,24 @@
 		background-color: #506EA5;
 	}
 </style>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#posterImage").on('change', function() {
+                readURL(this);
+            });
+        });
+        function readURL(input) {
+            if(input.files && input.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function (e) {
+                  $('#preImage').attr('src', e.target.result);
+               }
+               reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
 </head>
 <body>
    <section id="coming-soon">        
@@ -28,12 +46,20 @@
               <div class="col-sm-12">
                   <h1>전시회 등록화면</h1>
                   <div class="time-count">
-                      <form style="border:1px solid #ccc; width:300px;">
-                          <div class="container">
+                      <form style="border:1px solid #ccc; width:330px;">
+                          <div class="container" style="padding-left:10px; padding-right:10px; padding-bottom:10px;">
                             <h1>전시회 등록</h1>
                             <p>전시회 정보를 입력해주세요.</p>
                             <hr>
-                        
+                            
+                            
+							<div id="image-container">
+	                            <label for="posterImage"><b>포스터</b></label>
+	                        	<input type="file" accept="image/*" id="posterImage" required/><br/>
+        						<img style="width:300px;" id="preImage" src="#" alt="이미지 미리보기" />
+  
+							</div>
+								
                             <label for="title"><b>제목</b></label>
                             <input type="text" placeholder="전시회 제목" id="title" required><br/>
                         
@@ -62,7 +88,7 @@
                             <label for="inquiry"><b>문의</b></label>
                             <input type="text" placeholder="00-000-0000" id="inquiry" required><br/>
               				<br>
-                            <div id="btn-group" class="clearfix">
+                            <div id="btn-group" class="clearfix" style="text-align: center">
                               <button type="submit" id="add-btn" class="signupbtn">전시회 등록</button>
                               <button type="button" class="cancel-btn">취소</button>
                             </div>
@@ -73,6 +99,7 @@
           </div>
       </div>       
   </section>
+
 
 <script>
 $('#add-btn').click(function() {shw.add(`${ctx}`)})

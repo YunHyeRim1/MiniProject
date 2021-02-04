@@ -5,11 +5,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>전자정부 프레임워크 프로젝트</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        table {border: black 1px solid}
+        table tr {border: black 1px solid}
+        table tr td {border: black 1px solid}
+        table tr th {border: black 1px solid}
+    </style>
 </head>
 <body>
-<script></script>
+    <h1>전시회 목록</h1>
+    <a id="home" href="#"> Go Home </a>
+    <table class="my-tab" id="shw-tab"></table>
+		<tr>
+			<td>
+				<div id="shw-data"></div>
+			</td>
+		</tr>
+
+
+   
+    <script>
+      
+   </script>
 </body>
 </html>
