@@ -16,8 +16,7 @@ shw = (() => {
                 price: $('#price').val(),
 				host: $('#host').val(),
 				management: $('#management').val(),
-				inquiry: $('#inquiry').val(),
-				posterImage: $('#poster_image').val()
+				inquiry: $('#inquiry').val()
 			}),
 			dataType: 'json',
             contentType: 'application/json',
@@ -34,6 +33,51 @@ shw = (() => {
 		})
 	}
 	
+	const list = x => {
+		$.getJSON(`${x}/shows/list`, d => {
+	    	if(d.count != 0) {
+	            const list = d.list
+	            let tr = ''
+	            let i = 0
+	            for(; i < d.count; i++) {
+	                tr+= '<tr>'
+	                    +'<td class="text-center">'+list[i].showNum+'</td>'
+	                    +'<td class="text-center"><a class="title" id="'+list[i].showNum+'" href="#" >'+list[i].title+'</a></td>'
+	                    +'<td class="text-center">'+list[i].period+'</td>'
+	                    +'<td class="text-center">'+list[i].time+'</td>'
+	                    +'<td class="text-center">'+list[i].venue+'</td>'
+	                    +'<td class="text-center">'+list[i].admission+'</td>'
+	                    +'<td class="text-center">'+list[i].price+'</td>'
+	                    +'<td class="text-center">'+list[i].host+'</td>'
+	                    +'<td class="text-center">'+list[i].management+'</td>'
+	                    +'<td class="text-center">'+list[i].inquiry+'</td>'
+	                    +'</tr>'
+	            }
+	            $(`#shw-data`).html(tr)
+	            $(`.title`).each(function(i) {
+	                $(this).click(e => {
+	                    e.preventDefault()
+	                    localStorage.setItem('showNum', `${this.id}`)
+						alert(`상세페이지 진입 성공`)
+	                    location.href = `${x}/move/shows/detail`
+	                })
+	            })
+	        }else {
+	            alert(`목록 실패`)
+	            $(".showNum").text('조회결과 없음')
+	            $(".title").text('조회결과 없음')
+	            $(".period").text('조회결과 없음')
+	            $(".time").text('조회결과 없음')
+	            $(".venue").text('조회결과 없음')
+	            $(".admission").text('조회결과 없음')
+	            $(".price").text('조회결과 없음')
+	            $(".host").text('조회결과 없음')
+	            $(".management").text('조회결과 없음')
+	            $(".inquiry").text('조회결과 없음')
+	        }
+	    })        
+	}
+	/*
 	const list = x => {	
 		$.getJSON(`${x.ctx}/shows/list/${x.pageSize}/${x.pageNum}`, d => { 
 			$(`<h3/>`)
@@ -46,7 +90,7 @@ shw = (() => {
 			.appendTo(`#title`) 
 			$(`<tr/>`).attr({id: `tr_1`}).appendTo(`#tab`)
 			$.each(
-				[`No`,`제목`,`기간`,`시간`,`장소`,`입장연령`,`가격`,`주최`,`주관`,`문의`,`포스터`], 
+				[`No`,`제목`,`기간`,`시간`,`장소`,`입장연령`,`가격`,`주최`,`주관`,`문의`], 
 				(i,j) => {
 				$(`<th>${j}</th>`).css({backgroundColor: `MediumPurple`, fontSize: `small`})
 				.appendTo(`#tr_1`)
@@ -62,13 +106,12 @@ shw = (() => {
 							<td>${j.price}</td>
 							<td>${j.host}</td>
 							<td>${j.management}</td>
-							<td>${j.inquiry}</td>
-							<td>${j.posterImage}</td></tr>`)
+							<td>${j.inquiry}</td></tr>`)
 							.css({padding: `15px`, textAlign: `left`, fontSize: `small`})
 							.appendTo(`#tab`)
 			})
 			$(`<div/>`)
-			.attr({id: `show_page`})
+			.attr({id: `shw_page`})
 			.addClass(`pagination`)
 			.appendTo(`#shw-data`)
 			const page = d.page
@@ -84,7 +127,7 @@ shw = (() => {
 				.attr({href: `#`})
 				.text(`<<`)
 				.css({backgroundColor: `White`})
-				.appendTo(`#show_page`)
+				.appendTo(`#shw_page`)
 				.click(e=>{
 					e.preventDefault()
 					$(`#shw-data`).empty()
@@ -98,7 +141,7 @@ shw = (() => {
 						.attr({href: `#`})
 						.css({backgroundColor: (j != page.pageNum) ? `White` : `Lavender`})
 						.text(`${j}`)
-						.appendTo(`#show_page`)
+						.appendTo(`#shw_page`)
 						.click(e=>{
 							e.preventDefault()
 							$(`#shw-data`).empty()
@@ -110,7 +153,7 @@ shw = (() => {
 				.attr({href: `#`})
 				.css({backgroundColor: `White`})
 				.text(`>>`)
-				.appendTo(`#show_page`)
+				.appendTo(`#shw_page`)
 				.click(e=>{
 					e.preventDefault()
 					$(`#shw-data`).empty()
@@ -119,5 +162,88 @@ shw = (() => {
 			}
 		})
 	}
+	*/
+	const detail = x => {
+	$.getJSON(`${x}/shows/${localStorage.getItem(`showNum`)}`, d => {
+            $('#showNum').text(d.showNum)
+            $('#title').text(d.title)
+            $('#period').text(d.period)
+            $('#time').text(d.time)
+            $('#venue').text(d.venue)
+            $('#admission').text(d.admission)
+            $('#price').text(d.price)
+            $('#host').text(d.host)
+            $('#management').text(d.management)
+            $('#inquiry').text(d.inquiry)
 
-})
+            $('#update-btn').click(e => { 
+                $('#title').html('<input id="update-title" type="text" value="'+d.title+'"/>')
+                $('#period').html('<input id="update-period" type="text" value="'+d.period+'"/>')
+                $('#time').html('<input id="update-time" type="text" value="'+d.time+'"/>')
+                $('#venue').html('<input id="update-venue" type="text" value="'+d.venue+'"/>')
+                $('#admission').html('<input id="update-admission" type="text" value="'+d.admission+'"/>')
+                $('#price').html('<input id="update-price" type="text" value="'+d.price+'"/>')
+                $('#host').html('<input id="update-host" type="text" value="'+d.host+'"/>')
+                $('#management').html('<input id="update-management" type="text" value="'+d.management+'"/>')
+                $('#inquiry').html('<input id="update-inquiry" type="text" value="'+d.inquiry+'"/>')
+                $('#update').text('수정 화면')
+                $('#toggle').html('<button id="confirm-btn">수정 확인</button>')
+                $('#confirm-btn').click(e => {
+                    e.preventDefault()
+                    $.ajax({
+                        url: `${x}/shows`,
+                        type: 'PUT',
+                        data: JSON.stringify({
+                            showNum: d.showNum,
+                            title: $('#update-title').val(),
+                            period: $('#update-period').val(),
+                            time: $('#update-time').val(),
+                            venue: $('#update-venue').val(),
+                            admission: $('#update-admission').val(),
+                            price: $('#update-price').val(),
+                            host: $('#update-host').val(),
+                            management: $('#update-management').val(),
+                            inquiry: $('#update-inquiry').val()
+                        }),
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: d => {
+                            if(d.message === 'SUCCESS'){
+                                location.href = `${x}/move/shows/detail`
+                            }else{
+                                alert(`수정 실패`)
+                            }
+                        },
+                        error: e => {alert(`수정 에러 발생: ${e}`)}
+                    })
+                })
+            })
+
+            $('#delete-btn').click(e => {
+                e.preventDefault()
+                $.ajax({
+                    url: `${x}/shows`,
+                    type: `DELETE`,
+                    data: JSON.stringify({
+                        showNum: d.showNum
+                    }),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: d => {
+                        if(d.message === 'SUCCESS') {
+							alert(`삭제 성공`)
+                            location.href = `${x}/move/shows/list`
+                        }else {
+                            alert(`삭제 실패`)
+                        }
+                    },
+                    error: e => {
+                        alert(`삭제 에러 발생: ${e}`)
+                    }
+                })
+            })
+        })
+	}
+	
+	return {add, list, detail}
+})()

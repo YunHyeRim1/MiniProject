@@ -18,7 +18,7 @@ public class CommonController {
 	
 	@GetMapping("/generate/db")
     public Messenger generateDB() {
-    	logger.info("Shows Truncated Execute ...");
+    	logger.info("=====Shows Truncated Execute=====");
     	return (commonService.generateDB()==1)? Messenger.SUCCESS:Messenger.FAILURE;
     }
 

@@ -11,7 +11,6 @@ import com.example.demo.cmm.enm.Messenger;
 import com.example.demo.cmm.enm.Sql;
 import com.example.demo.cmm.enm.Table;
 import com.example.demo.cmm.service.CommonMapper;
-import com.example.demo.cmm.utl.Box;
 import com.example.demo.cmm.utl.Pagination;
 import com.example.demo.shw.service.Show;
 import com.example.demo.shw.service.ShowMapper;
@@ -30,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/show")
+@RequestMapping("/shows")
 public class ShowController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired ShowService showService;
@@ -40,24 +39,29 @@ public class ShowController {
 
     @PostMapping("")
     public Messenger add(@RequestBody Show show) {
+    	logger.info("=========== 전시회 등록 ==========="+show.toString());
     	return showMapper.insert(show)==1?Messenger.SUCCESS:Messenger.FAILURE;
     }
     
+    @GetMapping("/list")
+    public List<?> list() {
+    	logger.info("=========== 전시회 목록 ===========");
+        return showMapper.selectAll();
+    }
+    
+    /*
     @GetMapping("/list/{pageSize}/{pageNum}")
     public Map<?,?> list(@PathVariable String pageSize, @PathVariable String pageNum) {
     	logger.info("=========== 목록 진입 ===========");
-        var map = new HashMap<String, String>();
-        map.put("TOTAL_COUNT", Sql.TOTAL_COUNT.toString() + Table.SHOWS);	
+        var map = new HashMap<String, Object>();
     	var page = new Pagination(
-				Table.SHOWS.toString(), 
 				integer.apply(pageSize),
 				integer.apply(pageNum),
-				commonMapper.totalCount(map))
+				showMapper.count())
 				;
-    	var map2 = new HashMap<String, Object>();
-    	map2.put("list", showService.list(page));
-    	map2.put("page", page);
-        return map2;
+    	map.put("list", showService.list(page));
+    	map.put("page", page);
+        return map;
     }
     
     @GetMapping("/page/{pageSize}/{pageNum}/selectAll")
@@ -71,21 +75,25 @@ public class ShowController {
 				integer.apply(pageNum),
 				commonMapper.totalCount(map)));
     }
-    
-    @GetMapping("/shows/{showNum}")
-    public Show detail(@PathVariable String showNum) {
-        return showService.getShowById(showNum);
+    */
+    @GetMapping("/{showNum}")
+    public Show detail(@PathVariable int showNum) {
+    	logger.info("=========== 전시회 상세 ==========="+showNum);
+        return showMapper.selectById(showNum);
     }
     
     @PutMapping("")
-    public Messenger update(@RequestBody Show show){
-    	logger.info("Shows Updated Execute ...");
-        return showMapper.update(show)==1?Messenger.SUCCESS:Messenger.FAILURE;
+    public Map<?,?> update(@RequestBody Show show){
+    	logger.info("=========== 목록 수정 ===========");
+    	var map = new HashMap<>();
+        int result = showService.update(show);
+        map.put("message", (result == 1) ? "SUCCESS" : "FAILURE");
+        return map;
     }
     
     @DeleteMapping("")
     public Messenger delete(@RequestBody Show show){
-    	logger.info("Shows Deleted Execute ...");
+    	logger.info("=========== 목록 삭제 ===========");
         return showMapper.delete(show)==1?Messenger.SUCCESS:Messenger.FAILURE;
     }
     
@@ -96,4 +104,5 @@ public class ShowController {
     	map.put("TOTAL_COUNT", Sql.TOTAL_COUNT.toString() + Table.SHOWS);	
     	return string.apply(commonMapper.totalCount(map));
     }
+   
 }

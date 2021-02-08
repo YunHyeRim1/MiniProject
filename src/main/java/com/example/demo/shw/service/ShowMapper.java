@@ -12,11 +12,11 @@ public interface ShowMapper {
 	
 	public int insert(Show show);
 
-	public List<Show> selectAll(Pagination page);
+	public List<Show> selectAll();
 
 	public List<Show> list();
 	
-	public Show selectById(String showNum);
+	public Show selectById(int showNum);
 
 	public int update(Show show);
 

@@ -9,6 +9,21 @@ import lombok.NoArgsConstructor;
 
 @Component @Data @AllArgsConstructor @Lazy @NoArgsConstructor
 public class Show {
-    private String showNum, title, period, time, venue, admission, 
-    				price, host, management, inquiry, posterImage;
+	private int showNum;
+    private String title, period, time, venue, admission, 
+    				price, host, management, inquiry;
 }
+/*
+create table shows(
+   show_num int primary key auto_increment,
+   title varchar(30),
+   period varchar(30),
+   time varchar(20),
+   venue varchar(20),
+   admission varchar(20),
+   price varchar(50),
+   host varchar(20),
+   management varchar(20),
+   inquiry varchar(20)
+   );
+   poster_image varchar(100)*/

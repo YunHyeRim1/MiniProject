@@ -5,8 +5,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.cmm.utl.Box;
-
 @Repository
 public interface CommonMapper {
 	public int totalCount(Map<?,?> map);
