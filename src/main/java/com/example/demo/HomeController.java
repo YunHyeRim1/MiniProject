@@ -14,35 +14,23 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({"ctx","cmm","shw"})
+@SessionAttributes({"ctx","cmm","brd"})
 public class HomeController {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired HttpSession session;
 	@Autowired HttpServletRequest request;
+	
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/")
     public String index(HttpSession session, HttpServletRequest request) {
     	String ctx = request.getContextPath();
     	session.setAttribute("ctx", ctx);
-    	session.setAttribute("cmm", session.getAttribute("ctx")+"/resources/cmm");
-    	session.setAttribute("shw", session.getAttribute("ctx")+"/resources/shw");
-    	
+    	session.setAttribute("cmm", ctx+"/resources/cmm");
+    	session.setAttribute("brd", ctx+"/resources/brd");
         logger.info("Project Initialized ... ");
-        
         return "index";
     }
-    /*
-     * uss (User Service Support) 디렉토리 이동시 user 사용
-     * 
-    @GetMapping("/show/{page}")
-    public String show(@PathVariable String page) {
-        logger.info("이동 파일: " + page);
-        return String.format("shw:%s", page);
-    }*/
-    /*
-     * sym (System Manager) 디렉토리 이동시 admin 사용
-     * */
     @GetMapping("/move/{dir}/{page}") 
     public String move(@PathVariable String dir, 
     						@PathVariable String page) {
@@ -50,5 +38,4 @@ public class HomeController {
         logger.info("이동 파일: " + page);
         return String.format("%s/%s", dir, page);
     }
-
 }
