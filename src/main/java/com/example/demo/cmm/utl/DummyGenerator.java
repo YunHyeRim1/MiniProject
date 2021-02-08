@@ -1,25 +1,23 @@
 package com.example.demo.cmm.utl;
-
+import static com.example.demo.cmm.utl.Util.*;
+import static java.util.stream.Collectors.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.cmm.enm.Path;
-import com.example.demo.shw.service.Show;
-
-import static com.example.demo.cmm.utl.Util.*;
-import static java.util.stream.Collectors.*;
+import com.example.demo.bkg.service.Booking;
 
 @Service("dummy")
 public class DummyGenerator {
 	/*********************************
 	 * Student Dummy Data Generator 
-	 ********************************* 
+	 * *******************************
 	 */
 	/**
 	 * 1970 ~ 2000 사이의 랜덤한 연도수 뽑기 
@@ -29,53 +27,64 @@ public class DummyGenerator {
 	 * || 400으로 나눈 값이 0인 것은 윤년으로 포함된다. 
 	 * 그 외의 나머지 연도는 평년이다.
 	 * */
-	public String makePeriod() {
-		int year = random.apply(2021, 2022);
+	public String makeBirthday() {
+		int year = random.apply(1970, 2000);
 		int month = random.apply(1, 13);
 		int date = 0;
 		switch(month) {
-		case 2: date = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? 29 : 28; break;
-		case 4: case  6:case  9:case  11:date = 30;	break;
-		default: date = 31; break;
+		case 2: date = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? 
+				random.apply(1, 30) : random.apply(1, 29) ; break;
+		case 4: case  6: case  9: case  11: date = random.apply(1, 31);	break;
+		default: date = random.apply(1, 32); break;
 		}
-		return "2021"+"."+month+"."+date+" ~ "+"2022"+"."+month+"."+date;
+		return year+"-"+month+"-"+date;
 	}
-	
-	public String makeAdmission() {
-		return "전체관람가";
+	public String makeRegdate() {
+		int year = random.apply(2020, 2022);
+		int month = random.apply(1, 13);
+		int date = 0;
+		switch(month) {
+		case 2: date = ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ? 
+				random.apply(1, 30) : random.apply(1, 29) ; break;
+		case 4: case  6: case  9: case  11: date = random.apply(1, 31);	break;
+		default: date = random.apply(1, 32); break;
+		}
+		return year+"-"+month+"-"+date;
 	}
-	
-	public String makeTime() {
-		return "10:00 ~ 20:00";
+	public String makeExamdate() {
+		return "2020-11-30";
 	}
-	
-	public String makePrice() {
-		return "일반(만 19세 이상) : 10,000원\n청소년(만 13세-18세) : 9,000원\n어린이(36개월-12세) : 8,000원";
+	/*
+	 * 랜덤 성별 생성하기
+	 * "M" - male, "F" - female
+	 * */
+	public String makeGender() {
+		List<String> arr = Arrays.asList("M","F");
+		Collections.shuffle(arr);
+		return arr.get(0);
 	}
-
 	/*
 	 * 랜덤 사용자ID 생성하기
 	 * a-z 0-9
 	 * */
-	public String makeTitle() {
+	public String makeUserid() {
 		List<String> ls = Arrays.asList(
 				"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split(""));
 		Collections.shuffle(ls);
-		return ls.get(0)+ls.get(1)+ls.get(2)+ls.get(3)+ls.get(4)+ls.get(5);
+		return ls.get(0)+ls.get(1)+ls.get(2)+ls.get(3);
 	}
-	
 	/*
 	 * 랜덤 전화번호 생성하기
 	 * 
 	 * */
-	public String makeInquiry() {
-		return "02"+random.apply(1000, 10000)+"-"+random.apply(1000, 10000); 
+	public String makePhoneNumber() {
+		return "010-"+random.apply(1000, 10000)+"-"+random.apply(1000, 10000); 
 	}
 	
 	/*
 	 * 랜덤 이름 생성하기
 	 * 
-	 * 
+	 * */
 	public String makeUsername() {
 		List<String> fname = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안",
 		        "송", "류", "전", "홍", "고", "문", "양", "손", "배", "조", "백", "허", "유", "남", "심", "노", "정", "하", "곽", "성", "차", "주",
@@ -111,52 +120,45 @@ public class DummyGenerator {
 	    		.collect(Collectors.toList())
 	    		.get(0);
 	    return fname.get(0)+a[0]+a[1];
-	}*/
-	
-	public String makeVenue() {
-		List<String> ls = Arrays.asList("장소1","장소2","장소3","장소4","장소5");
-		Collections.shuffle(ls);
-		return ls.get(0);
+	}
+	public String makeSubject() {
+		List<String> ls = Arrays.asList("Java","Spring","Python","jQuery","eGovframe");
+		 Collections.shuffle(ls);
+		 return ls.get(0);
+	}
+	public int makeSubNum() {
+		List<Integer> ls = Arrays.asList(1,2,3,4,5);
+		 Collections.shuffle(ls);
+		 return ls.get(0);
 	}
 	
-	public String makeHost() {
-		List<String> ls = Arrays.asList("주최1","주최2","주최3","주최4","주최5");
+	public String makeEmail() {
+		List<String> ls = Arrays.asList("@test.com","@gmail.com","@naver.com");
 		Collections.shuffle(ls);
-		return ls.get(0);
+		return makeUserid()+ls.get(0);
 	}
-	
-	public String makeManagement() {
-		List<String> ls = Arrays.asList("주관1","주관2","주관3","주관4","주관5");
-		Collections.shuffle(ls);
-		return ls.get(0);
+	public String makeLocation() {
+		List<String> ls = Arrays.asList("예술의 전당","세종문화회관","성남아트센터","디뮤지엄");
+		 Collections.shuffle(ls);
+		 return ls.get(0);
 	}
-	
-	public Show makeShow() {
-		return new Show(0,
-				makeTitle(), 
-				makePeriod(), 
-				makeTime(), 
-				makeVenue(),
-				makeAdmission(),
+	public String makePrice() {
+		List<String> ls = Arrays.asList("5,000","8,000","10,000","무료");
+		 Collections.shuffle(ls);
+		 return ls.get(0);
+	}
+
+	public Booking makeBooking() {
+		return new Booking(0, 
+				"OOOOO 전시회", 
+				makeRegdate(), 
+				makeLocation(),
 				makePrice(),
-				makeHost(),
-				makeManagement(),
-				makeInquiry()
+				makeUserid(),
+				makeUsername(),
+				makeEmail(),
+				makePhoneNumber()
 				);
 	}
-	
-	/*********************************
-	 * Teacher Dummy Data Generator 
-	 ********************************* 
-	
-	public Teacher makeTeacher(int i) {
-		return new Teacher(
-				makeUsername(), 
-				makeEmail(), 
-				"1", // 비번
-				Path.DEFAULT_PROFILE.toString(),
-				i //makeTeacher()를 1 ~ 5까지만 생성하기 위해
-				);  
-	} */
 	
 }
