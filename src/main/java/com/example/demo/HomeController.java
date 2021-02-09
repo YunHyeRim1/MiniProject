@@ -14,41 +14,39 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({"ctx","cmm","shw"})
+@SessionAttributes({"ctx","cmm","mgr","uss"})
 public class HomeController {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired HttpSession session;
 	@Autowired HttpServletRequest request;
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/")
     public String index(HttpSession session, HttpServletRequest request) {
     	String ctx = request.getContextPath();
     	session.setAttribute("ctx", ctx);
-    	session.setAttribute("cmm", session.getAttribute("ctx")+"/resources/cmm");
-    	session.setAttribute("shw", session.getAttribute("ctx")+"/resources/shw");
-    	
+    	session.setAttribute("cmm", ctx+"/resources/cmm");
+    	session.setAttribute("mgr", ctx+"/resources/sym/mgr");
+    	session.setAttribute("stu", ctx+"/resources/uss");
         logger.info("Project Initialized ... ");
         
         return "index";
     }
-    /*
-     * uss (User Service Support) 디렉토리 이동시 user 사용
-     * 
-    @GetMapping("/show/{page}")
-    public String show(@PathVariable String page) {
+    
+    @GetMapping("/user/{page}")
+    public String user(@PathVariable String page) {
         logger.info("이동 파일: " + page);
-        return String.format("shw:%s", page);
-    }*/
-    /*
-     * sym (System Manager) 디렉토리 이동시 admin 사용
-     * */
-    @GetMapping("/move/{dir}/{page}") 
-    public String move(@PathVariable String dir, 
-    						@PathVariable String page) {
-        logger.info("이동 디렉토리: " + dir);
-        logger.info("이동 파일: " + page);
-        return String.format("%s/%s", dir, page);
+        return String.format("user:%s", page);
     }
+    
+    
+    @GetMapping("/mgr/{page}") 
+    public String manager(@PathVariable String page) {
+        logger.info("이동 파일: " + page);
+        return String.format("mgr:%s", page);
+    }
+    
 
+  
+	
 }

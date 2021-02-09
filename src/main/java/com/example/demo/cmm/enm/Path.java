@@ -1,13 +1,13 @@
 package com.example.demo.cmm.enm;
 
 public enum Path {
-	DEFAULT_POSTER;
+	DEFAULT_PROFILE;
 	@Override
 	public String toString() {
 		String result = "";
 		switch (this) {
-		case DEFAULT_POSTER:
-			result = "http://artinsight.co.kr/data/tmp/1605/3b177ed4145fc7746074a0bbcea5b6e5_htRjOnHub19d76gNzaI76lrd.jpg";
+		case DEFAULT_PROFILE:
+			result = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuZGp08DDSD0P3PMfKSbbPu2nVmJdH74gHg&usqp=CAU";
 			break;
 
 		default:

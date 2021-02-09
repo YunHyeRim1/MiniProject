@@ -1,24 +1,32 @@
 package com.example.demo.cmm.enm;
 
 public enum Sql {
-	CREATE_SHOWS, TABLE_COUNT, TRUNCATE, TOTAL_COUNT, DROP_TABLE;
+	CREATE_MANAGERS, CREATE_USERS, TABLE_COUNT,
+	TRUNCATE, TOTAL_COUNT, DROP_TABLE;
 	@Override
 	public String toString() {
 		String query = "";
 		switch(this) {
-		case CREATE_SHOWS:
-			query = "create table shows(\n" + 
-					"   show_num int primary key auto_increment ,\n" + 
-					"   title varchar(30),\n" + 
-					"   period varchar(30),\n" + 
-					"   time varchar(20),\n" + 
-					"   venue varchar(20),\n" + 
-					"   admission varchar(20),\n" + 
-					"   price varchar(50),\n" + 
-					"   host varchar(20),\n" + 
-					"   management varchar(20),\n" + 
-					"   poster_image varchar(100)\n" + 
+		case CREATE_MANAGERS:
+			query = "create table managers(\n" + 
+					"   mgr_num int primary key auto_increment ,\n" + 
+					"   name varchar(20),\n" + 
+					"   email varchar(20),\n" + 
+					"   password varchar(20),\n" + 
+					"   profile_image varchar(100)\n" + 
 					"   )"; break;
+		
+		case CREATE_USERS:
+			query = "create table users(\n" + 
+					"   userid varchar(20) primary key,\n" + 
+					"   password varchar(20),\n" + 
+					"   name varchar(20),\n" +  
+					"   phone varchar(50),\n" +  
+					"   email varchar(50),\n" +  
+					"   birthday varchar(20),\n" + 
+					"   gender varchar(20),\n" + 
+					"   )"; break;
+		
 		case TRUNCATE:
 			query = "truncate table \t"; break;
 		case TOTAL_COUNT:

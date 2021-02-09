@@ -16,13 +16,14 @@ import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.cmm.service.CommonMapper;
 
 @Component
 public class Util {
 	public static Consumer<String> print = System.out::print;
 	public static Function<Object, String> string = String :: valueOf;
 	public static Function<String, Integer> integer = Integer :: valueOf;
-	public static BiFunction<String, String, Integer> mySkip = (t, u) -> (integer.apply(t) - 1) * integer.apply(u);
+	public static BiFunction<String,String, Integer> mySkip = (t, u) -> (integer.apply(t) - 1) * integer.apply(u);
 	public static Function<String, Object> intO = Integer :: valueOf;
 	public static BiPredicate<String, String> equals = String :: equals;
 	public static BiFunction<Integer, Integer, Integer> random =(t,u)->(int)(Math.random()*(u-t))+t;
@@ -32,5 +33,6 @@ public class Util {
 	public static BiFunction<String,String, File> mkDir = File::new;
 	public static BiFunction<File,String, File> mkFile = File::new;
 	//public static Function<Pagination, Pagination> mkPage = t -> { }
+	
 	
 }
