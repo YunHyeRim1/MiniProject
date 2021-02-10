@@ -97,61 +97,98 @@ label {
   <div class="col-75">
 	  <h1>전시회 상세 페이지</h1> 
       <form>
-		  <table class="table">
-	        <thead>
-	            <tr>
-	                <td>글번호</td>
-	                <td id="showNum"></td>
-	            </tr>
-	            <tr>
-	                <td>제목</td>
-	                <td id="title"></td>
-	            </tr>
-	            <tr>
-	                <td>기간</td>
-	                <td id="period"></td>
-	            </tr>
-	            <tr>
-	                <td>시간</td>
-	                <td id="time"></td>
-	            </tr>
-	            <tr>
-	                <td>장소</td>
-	                <td id="venue"></td>
-	            </tr>
-	            <tr>
-	                <td>관람등급</td>
-	                <td id="admission"></td>
-	            </tr>
-	            <tr>
-	                <td>가격</td>
-	                <td id="price"></td>
-	            </tr>
-	            <tr>
-	                <td>주최</td>
-	                <td id="host"></td>
-	            </tr>
-	            <tr>
-	                <td>주관</td>
-	                <td id="management"></td>
-	            </tr>
-	            <tr>
-	                <td>문의</td>
-	                <td id="inquiry"></td>
-	            </tr>
-	      </thead>
-	    </table>
+    <div class="row">
+      <div class="col-25">
+        <label for="showNum">No</label>
+      </div>
+      <div class="col-75">
+        <p id="showNum"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="title">제목</label>
+      </div>
+      <div class="col-75">
+        <p id="title"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="period">기간</label>
+      </div>
+      <div class="col-75">
+        <p id="period"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="time">시간</label>
+      </div>
+      <div class="col-75">
+        <p id="time"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="venue">장소</label>
+      </div>
+      <div class="col-75">
+        <p id="venue"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="admission">입장연령</label>
+      </div>
+      <div class="col-75">
+        <p id="admission"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="price">가격</label>
+      </div>
+      <div class="col-75">
+        <p id="price"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="host">주최</label>
+      </div>
+      <div class="col-75">
+        <p id="host"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="management">주관</label>
+      </div>
+      <div class="col-75">
+        <p id="management"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="inquiry">문의</label>
+      </div>
+      <div class="col-75">
+        <p id="inquiry"></p>
+      </div>
+    </div>
+      
 	    <div id="btn-group" class="clearfix" style="text-align: center">
 	      <button type="button" id="update-btn" class="update-btn">수정</button>
 	      <button type="button" id="delete-btn" class="delete-btn">삭제</button>
 	    </div>
-      </form>
+	  </form>
     </div>
   </div>
 </div>
 
 
-<script src="${cmm}/js/cmm.js"></script>
+<script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
 <script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
 <script>
 	shw.detail(`<%=application.getContextPath() %>`)

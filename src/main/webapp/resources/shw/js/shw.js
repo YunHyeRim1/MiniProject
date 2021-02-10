@@ -7,7 +7,7 @@ shw = (() => {
 			url: `${x}/shows`,
 			type: `POST`,
 			data: JSON.stringify({
-				showNum: 0,
+
                 title: $('#title').val(),
                 period: $('#period').val(),
                 time: $('#time').val(),
@@ -32,15 +32,14 @@ shw = (() => {
             error: e => { alert(`전시회 등록 실패: ${e}`)}
 		})
 	}
-	
+	/*
 	const list = x => {
 		$.getJSON(`${x}/shows/list`, d => {
 			alert(`목록진입1`)
-			const list = d.list
 			let tr = ''
-			$.each(d.list,
+			$.each(d,
 				(i, j) => {
-						$(tr+=`<tr><td>${j.showNum}</td>
+						$(`<tr><td>${j.showNum}</td>
 			   	    		<td><a class="title" href="#" id="${j.title}">${j.title}</a></td>
 			   	    		<td>${j.period}</td>
 							<td>${j.time}</td>
@@ -50,27 +49,25 @@ shw = (() => {
 							<td>${j.host}</td>
 							<td>${j.management}</td>
 							<td>${j.inquiry}</td></tr>`)
-							.css({padding: `15px`, textAlign: `left`, fontSize: `small`})
-							.appendTo(`#tab`) 
+							.appendTo(`#shw-data`)
 			})
-			$('#shw-data').html(tr)
             $(`.title`).each(function() {
                 $(this).click(e => {
                     e.preventDefault()
                     localStorage.setItem(`showNum`, `${this.id}`)
 					alert(`목록에서 상세페이지 진입 성공`)
-                    location.href = `${x}/move/shows/detail`
+                    location.href = `${x}/move/shw/detail`
                 })
             })
 		})
 	}
 	
-	
+	*/
 	
 	/*
 	const list = x => {	
 		$.getJSON(`${x.ctx}/shows/list/${x.pageSize}/${x.pageNum}`, d => { 
-			
+	*/
 	const list = x => {
 		$.getJSON(`${x}/shows/list`, d => {
 			$(`<h3/>`)
@@ -84,10 +81,10 @@ shw = (() => {
 			$.each(
 				[`No`,`제목`,`기간`,`시간`,`장소`,`입장연령`,`가격`,`주최`,`주관`,`문의`], 
 				(i,j) => {
-				$(`<th>${j}</th>`).css({backgroundColor: `MediumPurple`, fontSize: `small`})
+				$(`<th>${j}</th>`).css({backgroundColor: `MediumPurple`, fontSize: `medium`})
 				.appendTo(`#tr_1`)
 			})
-			$.each(d.list, 
+			$.each(d, 
 				(i, j) => {
 						$(`<tr><td>${j.showNum}</td>
 			   	    		<td><a class="title" href="#" id="${j.title}">${j.title}</a></td>
@@ -107,40 +104,41 @@ shw = (() => {
                     e.preventDefault()
                     localStorage.setItem(`showNum`, `${this.id}`)
 					alert(`상세페이지 진입 성공`)
-                    location.href = `${x}/move/shows/detail`
+                    location.href = `${x}/move/shw/detail`
 				})
 			})
 		})
 		
 	}
-	*/
+	
 	const detail = x => {
 		alert(`상세 진입 1`)
 	$.getJSON(`${x}/shows/${localStorage.getItem(`showNum`)}`, d => {
-            $('#showNum').text(d.showNum)
-            $('#title').text(d.title)
-            $('#period').text(d.period)
-            $('#time').text(d.time)
-            $('#venue').text(d.venue)
-            $('#admission').text(d.admission)
-            $('#price').text(d.price)
-            $('#host').text(d.host)
-            $('#management').text(d.management)
-            $('#inquiry').text(d.inquiry)
+            $(`#showNum`).text(d.showNum)
+            $(`#title`).text(d.title)
+            $(`#period`).text(d.period)
+            $(`#time`).text(d.time)
+            $(`#venue`).text(d.venue)
+            $(`#admission`).text(d.admission)
+            $(`#price`).text(d.price)
+            $(`#host`).text(d.host)
+            $(`#management`).text(d.management)
+            $(`#inquiry`).text(d.inquiry)
 
             $('#update-btn').click(e => { 
-                $('#title').html('<input id="update-title" type="text" value="'+d.title+'"/>')
-                $('#period').html('<input id="update-period" type="text" value="'+d.period+'"/>')
-                $('#time').html('<input id="update-time" type="text" value="'+d.time+'"/>')
-                $('#venue').html('<input id="update-venue" type="text" value="'+d.venue+'"/>')
-                $('#admission').html('<input id="update-admission" type="text" value="'+d.admission+'"/>')
-                $('#price').html('<input id="update-price" type="text" value="'+d.price+'"/>')
-                $('#host').html('<input id="update-host" type="text" value="'+d.host+'"/>')
-                $('#management').html('<input id="update-management" type="text" value="'+d.management+'"/>')
-                $('#inquiry').html('<input id="update-inquiry" type="text" value="'+d.inquiry+'"/>')
+                $('#title').html(`<input id="update-title" type="text" value="${d.title}"/>`)
+                $('#period').html(`<input id="update-period" type="text" value="${d.period}"/>`)
+                $('#time').html(`<input id="update-time" type="text" value="${d.time}"/>`)
+                $('#venue').html(`<input id="update-venue" type="text" value="${d.venue}"/>`)
+                $('#admission').html(`<input id="update-admission" type="text" value="${d.admission}"/>`)
+                $('#price').html(`input id="update-price" type="text" value="${d.price}"/>`)
+                $('#host').html(`<input id="update-host" type="text" value="${d.host}"/>`)
+                $('#management').html(`input id="update-management" type="text" value="${d.management}"/>`)
+                $('#inquiry').html(`<input id="update-inquiry" type="text" value="${d.inquiry}"/>`)
                 $('#update').text('수정 화면')
                 $('#toggle').html('<button id="confirm-btn">수정 확인</button>')
-                $('#confirm-btn').click(e => {
+               
+				$('#confirm-btn').click(e => {
                     e.preventDefault()
                     $.ajax({
                         url: `${x}/shows`,
@@ -162,7 +160,7 @@ shw = (() => {
                         success: d => {
                             if(d.message === 'SUCCESS'){
 								alert(`수정 성공`)
-                                location.href = `${x}/move/shows/detail`
+                                location.href = `${x}/move/shw/detail`
                             }else{
                                 alert(`수정 실패`)
                             }
@@ -185,7 +183,7 @@ shw = (() => {
                     success: d => {
                         if(d.message === 'SUCCESS') {
 							alert(`삭제 성공`)
-                            location.href = `${x}/move/shows/list`
+                            location.href = `${x}/move/shw/list`
                         }else {
                             alert(`삭제 실패`)
                         }

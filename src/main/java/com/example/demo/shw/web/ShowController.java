@@ -74,7 +74,7 @@ public class ShowController {
     */
     @GetMapping("/{showNum}")
     public Show detail(@PathVariable int showNum) {
-    	logger.info("=========== 전시회 상세 ==========="+showNum);
+    	logger.info("=========== 전시회 상세 ===========");
         return showMapper.selectById(showNum);
     }
     

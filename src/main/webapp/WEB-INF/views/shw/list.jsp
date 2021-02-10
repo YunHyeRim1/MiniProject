@@ -3,13 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
-<html land="en">
+<html>
 <head>
 <meta charset="utf-8">
 <title>전자정부 프레임워크 프로젝트</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+#shw-data td {
+	border: 1px solid black; padding: 1px;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -120,38 +124,7 @@ html {
     <div class="container">
       <form>
         <div class="col-50">
-	  	<table id="shw-data">
-	  		 	<tr>
-	                <td>글번호</td>
-	            </tr>
-	            <tr>
-	                <td>제목</td>
-	            </tr>
-	            <tr>
-	                <td>기간</td>
-	            </tr>
-	            <tr>
-	                <td>시간</td>
-	            </tr>
-	            <tr>
-	                <td>장소</td>
-	            </tr>
-	            <tr>
-	                <td>관람등급</td>
-	            </tr>
-	            <tr>
-	                <td>가격</td>
-	            </tr>
-	            <tr>
-	                <td>주최</td>
-	            </tr>
-	            <tr>
-	                <td>주관</td>
-	            </tr>
-	            <tr>
-	                <td>문의</td>
-	            </tr>
-			</table>	  		
+		        <div id="shw-data"></div>
         </div>
       </form>
     </div>
