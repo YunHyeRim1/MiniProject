@@ -110,29 +110,22 @@ html {
 </style>
 </head>
 <body>
-
-<div id="shw-data"></div>
-
 <div class="about-section">
-<button type="button" class="goHome-btn" id="goHome" onclick="location.href='${ctx}/'"><i class="fa fa-home"></i></button>
-  <h1>전시회 목록</h1> 
-  <p>현재 진행 중인 전시회 목록입니다.</p>
-  <p>Resize the browser window to see that this page is responsive by the way.</p>
-</div>
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form>
-        <div class="col-50">
-		        <div id="shw-data"></div>
-        </div>
-      </form>
+	<button type="button" class="goHome-btn" id="goHome" onclick="location.href='${ctx}/'"><i class="fa fa-home"></i></button>
+	<form>
+	  <h2>전시회 목록</h2> 
+	  <p>현재 진행 중인 전시회 목록입니다.</p>
+    <div class="row">
+      <div class="col-25">
+      	  <br>
+		  <div id="shw-data"></div>
+      </div>
     </div>
-  </div>
+    </form>
 </div>
 
-<script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
-<script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
+<script src="${cmm}/js/cmm.js"></script>
+<script src="${shw}/js/shw.js"></script>
 <script>
 	shw.list(`<%=application.getContextPath() %>`)
 </script>
