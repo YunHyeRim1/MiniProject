@@ -127,7 +127,7 @@ html {
 <script src="${cmm}/js/cmm.js"></script>
 <script src="${shw}/js/shw.js"></script>
 <script>
-	shw.list(`<%=application.getContextPath() %>`)
+	shw.list(`${ctx}`)
 </script>
 </body>
 </html>

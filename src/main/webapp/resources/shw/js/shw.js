@@ -7,7 +7,6 @@ shw = (() => {
 			url: `${x}/shows`,
 			type: `POST`,
 			data: JSON.stringify({
-				showNum: 0,
                 title: $('#title').val(),
                 period: $('#period').val(),
                 time: $('#time').val(),
@@ -21,10 +20,8 @@ shw = (() => {
 			dataType: 'json',
             contentType: 'application/json',
             success: d => {
-
                     alert(`전시회 등록 완료`)
                     location.href=`${x}/move/shw/list`
-            
             },
             error: e => { alert(`전시회 등록 실패: ${e}`)
 							location.reload()
@@ -80,7 +77,7 @@ shw = (() => {
 			$.each(
 				[`No`,`제목`,`기간`,`시간`,`장소`], 
 				(i,j) => {
-				$(`<th>${j}</th>`).css({backgroundColor: `#506EA5`, fontSize: `small`})
+				$(`<th>${j}</th>`).css({backgroundColor: `#6482B9`, fontSize: `small`})
 				.appendTo(`#tr_1`)
 			})
 			$.each(d, 
@@ -117,8 +114,11 @@ shw = (() => {
             $(`#host`).text(d.host)
             $(`#management`).text(d.management)
             $(`#inquiry`).text(d.inquiry)
+			$('#toggle').html('<button id="update-btn">수정</button>&nbsp;<button id="delete-btn">삭제</button>')
+    
 			
             $('#update-btn').click(e => { 
+				e.preventDefault()
                 $('#title').html(`<input id="update-title" type="text" value="${d.title}"/>`)
                 $('#period').html(`<input id="update-period" type="text" value="${d.period}"/>`)
                 $('#time').html(`<input id="update-time" type="text" value="${d.time}"/>`)
@@ -128,8 +128,7 @@ shw = (() => {
                 $('#host').html(`<input id="update-host" type="text" value="${d.host}"/>`)
                 $('#management').html(`<input id="update-management" type="text" value="${d.management}"/>`)
                 $('#inquiry').html(`<input id="update-inquiry" type="text" value="${d.inquiry}"/>`)
-                $('#update').text('수정 화면')
-                $('#update-btn').html('<butdton id="confirm-btn">수정 확인</button>')
+                $('#toggle').html('<button id="confirm-btn">수정 확인</button>&nbsp;<button id="cancel-btn">취소</button>')
                
 				$('#confirm-btn').click(e => {
                     e.preventDefault()
@@ -151,14 +150,18 @@ shw = (() => {
                         dataType: 'json',
                         contentType: 'application/json',
                         success: d => {
-                         
 								alert(`수정 성공`)
                                 location.href = `${x}/move/shw/detail`
-                       
                         },
                         error: e => {alert(`수정 에러 발생: ${e}`)}
                     })
                 })
+
+				$('#cancel-btn').click(e => {
+					e.preventDefault()
+					alert(`수정 취소`)
+					location.href = `${x}/move/shw/detail`
+				})
             })
 
             $('#delete-btn').click(e => {
@@ -172,10 +175,8 @@ shw = (() => {
                     dataType: 'json',
                     contentType: 'application/json',
                     success: d => {
-                 
 							alert(`삭제 성공`)
                             location.href = `${x}/move/shw/list`
-               
                     },
                     error: e => {
                         alert(`삭제 에러 발생: ${e}`)

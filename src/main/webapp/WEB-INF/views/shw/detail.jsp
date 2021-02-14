@@ -166,8 +166,7 @@ label {
       </div>
     </div>
 	    <div id="btn-group" class="clearfix" style="text-align: right">
-	      <button type="button" id="update-btn" class="update-btn">수정</button>
-	      <button type="button" id="delete-btn" class="delete-btn">삭제</button>
+	      <div id="toggle"></div>
 	    </div>
     </form>
 </div>
@@ -175,7 +174,7 @@ label {
 <script src="${cmm}/js/cmm.js"></script>
 <script src="${shw}/js/shw.js"></script>
 <script>
-	shw.detail(`<%=application.getContextPath() %>`)
+	shw.detail(`${ctx}`)
 </script>
 </body>
 </html>
