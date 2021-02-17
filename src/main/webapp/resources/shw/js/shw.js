@@ -77,11 +77,13 @@ shw = (() => {
 			$.each(
 				[`No`,`제목`,`기간`,`시간`,`장소`], 
 				(i,j) => {
+					console.log(i);
 				$(`<th>${j}</th>`).css({backgroundColor: `#6482B9`, fontSize: `small`})
 				.appendTo(`#tr_1`)
 			})
 			$.each(d, 
 				(i, j) => {
+					console.log(i);
 						$(`<tr><td>${j.showNum}</td>
 			   	    		<td><a class="title" href="#" id="${j.showNum}">${j.title}</a></td>
 			   	    		<td>${j.period}</td>

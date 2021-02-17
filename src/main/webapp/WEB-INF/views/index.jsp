@@ -95,8 +95,8 @@ label {
 	</form>
 	</div>
 	
-<script src="${shw}/js/shw.js"></script>
-<script src="${cmm}/js/cmm.js"></script>
+<script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
+<script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
 <script>
 	cmm.init(`${ctx}`)
 </script>
