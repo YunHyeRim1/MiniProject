@@ -14,6 +14,9 @@ public class Pagination {
 			blockCount, prevBlock, nextBlock, blockNum;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refs/heads/develop-keb
 	public final int BLOCK_SIZE = 5;
 =======
 	public final int BLOCK_SIZE = 10;
