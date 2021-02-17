@@ -89,17 +89,16 @@ label {
 				<div id="menu-group">
 					<a href="#" id="add">등록하기</a>
 					<a href="#" id="list">목록보기</a>
-					<a href="#" id="detail">상세보기</a>
 				</div>
 			</div>
 		</div>
 	</form>
 	</div>
 	
-<script src="${shw}/js/shw.js"></script>
+<script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
 <script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
 <script>
-	cmm.init(`<%=application.getContextPath() %>`)
+	cmm.init(`${ctx}`)
 </script>
 </body>
 </html>
