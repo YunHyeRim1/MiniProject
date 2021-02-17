@@ -13,14 +13,7 @@ public class Pagination {
 			pageCount, pageSize,  startPage, endPage, pageNum,
 			blockCount, prevBlock, nextBlock, blockNum;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/heads/develop-keb
-	public final int BLOCK_SIZE = 5;
-=======
 	public final int BLOCK_SIZE = 10;
->>>>>>> refs/heads/develop-pwy
 	private String tname;
 	private boolean existPrev, existNext;
 	public Pagination(){}

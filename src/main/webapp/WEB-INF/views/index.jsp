@@ -7,75 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>게시판</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<<<<<<< HEAD
 <style>
 * {
   box-sizing: border-box;
-=======
-    <title>전시회</title>
-    <style>
-body {
-  font-family: Roboto, Arial, sans-serif;
-  ont-size: 15px;
-  color: #525252;
-  padding: 8px;
-  line-height: 160%;
 }
-a {
-  color: #598585;
->>>>>>> refs/heads/develop-keb
-}
-<<<<<<< HEAD
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
-=======
-
-a:link {
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #2f4f4f;
-}
-
-a:active {
-  text-decoration: underline;
-}
-button {
-    width:50px;
-    background-color: #467575;
-    border: none;
-    color:#fff;
-    padding: 2px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 13px;
-    margin: 4px;
-    cursor: pointer;
-    border-radius:10px;
-}
-button:hover {
-  background-color: #2b4d4d;
-}
-input[type=text] {
-  width: 13%;
-  margin-bottom: 20px;
-  padding: 7px;
->>>>>>> refs/heads/develop-keb
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 4px;
+  resize: vertical;
 }
-<<<<<<< HEAD
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
@@ -134,66 +77,39 @@ label {
 	}
 }
 </style>
-=======
->>>>>>> refs/heads/develop-pwy
-=======
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
->>>>>>> refs/heads/develop-keb
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-				<h1>전시회 정보</h1>
-	<div class="container">
-=======
-    <h1> 게시판1 </h1>
+	<h1>전시회 정보</h1>
     <div class="container">
->>>>>>> refs/heads/develop-pwy
 	<form>
 		<div class="row">
         	<div class="col-20">
 				<div id="menu-group">
-<<<<<<< HEAD
 					<a href="#" id="add">등록하기</a>
 					<a href="#" id="list">목록보기</a>
-=======
-        <a id="write" href="#">글 쓰기</a>
-        <a id="list" href="#">글 목록</a>
-        <a id="detail" href="#">글 상세</a>
->>>>>>> refs/heads/develop-pwy
+					<br>
+					<br>
+			        <a id="write" href="#">글 쓰기</a>
+			        <a id="list" href="#">글 목록</a>
+			        <a id="detail" href="#">글 상세</a>
+			        <br>
+			        <br>
+			        <a href="#" id="user-page">유저페이지</a><br>
+				    <a href="#" id="exhbn-page">전시페이지</a><br>
+				    <a href="#" id="booking-page">예약페이지</a><br>
+				    <a href="#" id="review-page">리뷰페이지</a><br>
 				</div>
 			</div>
 		</div>
 	</form>
 	</div>
-<<<<<<< HEAD
-	
-<script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
-=======
-    <h2>예약 페이지</h2>
-    <a href="#" id="user-page">유저페이지</a><br>
-    <a href="#" id="exhbn-page">전시페이지</a><br>
-    <a href="#" id="booking-page">예약페이지</a><br>
-    <a href="#" id="review-page">리뷰페이지</a><br>
->>>>>>> refs/heads/develop-keb
-<script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
-<script>
-<<<<<<< HEAD
-	cmm.init(`${ctx}`)
-=======
-	cmm.init(`<%=application.getContextPath() %>`)
->>>>>>> refs/heads/develop-keb
-</script>
-=======
 
         
-<script src="${brd}/js/brd.js"></script>
-    <script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
-    <script>
+<script src="<%=application.getContextPath() %>/resources/brd/js/brd.js"></script>
+<script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
+<script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
+<script>
     	cmm.init(`<%=application.getContextPath() %>`)
-    </script>
->>>>>>> refs/heads/develop-pwy
+</script>
 </body>
 </html>
