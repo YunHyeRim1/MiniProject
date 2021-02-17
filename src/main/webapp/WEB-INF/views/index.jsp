@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false" %>
+<%@ page language="java" pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -7,8 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전시회 정보 사이트</title>
+    <title>게시판</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<<<<<<< HEAD
 <style>
 * {
   box-sizing: border-box;
@@ -78,27 +79,50 @@ label {
 	}
 }
 </style>
+=======
+>>>>>>> refs/heads/develop-pwy
 </head>
 <body>
+<<<<<<< HEAD
 
 				<h1>전시회 정보</h1>
 	<div class="container">
+=======
+    <h1> 게시판1 </h1>
+    <div class="container">
+>>>>>>> refs/heads/develop-pwy
 	<form>
 		<div class="row">
         	<div class="col-20">
 				<div id="menu-group">
+<<<<<<< HEAD
 					<a href="#" id="add">등록하기</a>
 					<a href="#" id="list">목록보기</a>
+=======
+        <a id="write" href="#">글 쓰기</a>
+        <a id="list" href="#">글 목록</a>
+        <a id="detail" href="#">글 상세</a>
+>>>>>>> refs/heads/develop-pwy
 				</div>
 			</div>
 		</div>
 	</form>
 	</div>
+<<<<<<< HEAD
 	
 <script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
 <script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
 <script>
 	cmm.init(`${ctx}`)
 </script>
+=======
+
+        
+<script src="${brd}/js/brd.js"></script>
+    <script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
+    <script>
+    	cmm.init(`<%=application.getContextPath() %>`)
+    </script>
+>>>>>>> refs/heads/develop-pwy
 </body>
 </html>

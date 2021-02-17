@@ -14,25 +14,28 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({"ctx","cmm","shw"})
+@SessionAttributes({"ctx","cmm","brd"})
 public class HomeController {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired HttpSession session;
 	@Autowired HttpServletRequest request;
+	
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/")
     public String index(HttpSession session, HttpServletRequest request) {
     	String ctx = request.getContextPath();
     	session.setAttribute("ctx", ctx);
     	session.setAttribute("cmm", session.getAttribute("ctx")+"/resources/cmm");
-    	session.setAttribute("shw", session.getAttribute("ctx")+"/resources/shw");
-    	
+    	session.setAttribute("brd", session.getAttribute("ctx")+"/resources/brd");
         logger.info("Project Initialized ... ");
-        
         return "index";
     }
+<<<<<<< HEAD
  
+=======
+    
+>>>>>>> refs/heads/develop-pwy
     @GetMapping("/move/{dir}/{page}") 
     public String move(@PathVariable String dir, 
     						@PathVariable String page) {
@@ -40,5 +43,4 @@ public class HomeController {
         logger.info("이동 파일: " + page);
         return String.format("%s/%s", dir, page);
     }
-
 }
