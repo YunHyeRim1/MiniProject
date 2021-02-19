@@ -76,9 +76,9 @@ shw = (() => {
 			$(`<tr/>`).attr({id: `tr_1`}).appendTo(`#tab`)
 			$.each(
 				[`No`,`제목`,`기간`,`시간`,`장소`], 
-				(i,j) => {
+				(i, j) => {
 					console.log(i);
-				$(`<th>${j}</th>`).css({backgroundColor: `#6482B9`, fontSize: `small`})
+				$(`<th>${j}</th>`).css({backgroundColor: `#6482B9`, fontSize: `medium`})
 				.appendTo(`#tr_1`)
 			})
 			$.each(d, 
@@ -89,7 +89,7 @@ shw = (() => {
 			   	    		<td>${j.period}</td>
 							<td>${j.time}</td>
 							<td>${j.venue}</td></tr>`)
-							.css({padding: `15px`, textAlign: `left`, fontSize: `small`})
+							.css({padding: `15px`, textAlign: `left`, fontSize: `medium`})
 							.appendTo(`#tab`)
 			})
 			$(`.title`).each(function() {

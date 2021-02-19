@@ -1,4 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" session="false"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -54,11 +54,25 @@ input[type=text] {
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+.goHome-btn {
+  background-color: #467575;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.goHome-btn:hover {
+  background-color: #2F4F4F;
+}
 </style>
+	<button type="button" class="goHome-btn" id="goHome" onclick="location.href='${ctx}/'"><i class="fa fa-home"></i></button>
     <h2>유저 페이지</h2>
     <a href="#" id="user-register">회원가입</a><br>
     <a href="#" id="user-login">로그인</a><br>
-<script src="${uss}/js/uss.js"></script>
+
+	<script src="${uss}/js/uss.js"></script>
+	
 <script>
 	uss.init(`${ctx}`)
 </script>

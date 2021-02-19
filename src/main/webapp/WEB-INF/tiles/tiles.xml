@@ -21,4 +21,7 @@
 	<definition name="uss:*" extends="public">
 	    <put-attribute name="content" value="/WEB-INF/views/uss/{1}.jsp"/>
 	</definition>
+	<definition name="*:*" extends="public">
+	    <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
 </tiles-definitions>

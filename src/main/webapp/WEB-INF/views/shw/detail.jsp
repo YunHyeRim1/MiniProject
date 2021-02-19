@@ -78,7 +78,6 @@ label {
 	}
 }
 </style>
-</head>
 <body>
 <div class="container">
 	<button type="button" class="goHome-btn" id="goHome" onclick="location.href='${ctx}/'"><i class="fa fa-home"></i></button>

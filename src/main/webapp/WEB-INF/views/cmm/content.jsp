@@ -19,20 +19,16 @@ body {
 a {
   color: #598585;
 }
-
 a:link {
   text-decoration: none;
 }
-
 a:visited {
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
   color: #2f4f4f;
 }
-
 a:active {
   text-decoration: underline;
 }

@@ -85,28 +85,27 @@ label {
 		<div class="row">
         	<div class="col-20">
 				<div id="menu-group">
-					<a href="#" id="add">등록하기</a>
-					<a href="#" id="list">목록보기</a>
+					<a href="#" id="add">전시회 등록</a>
+					<a href="#" id="showlist">전시회 목록</a>
 					<br>
 					<br>
-			        <a id="write" href="#">글 쓰기</a>
-			        <a id="list" href="#">글 목록</a>
-			        <a id="detail" href="#">글 상세</a>
+			        <a href="#" id="write">리뷰 작성</a>
+			        <a href="#" id="list">리뷰 목록</a>
+			        <a href="#" id="detail">리뷰 상세</a>
 			        <br>
 			        <br>
-			        <a href="#" id="user-page">유저페이지</a><br>
-				    <a href="#" id="exhbn-page">전시페이지</a><br>
-				    <a href="#" id="booking-page">예약페이지</a><br>
-				    <a href="#" id="review-page">리뷰페이지</a><br>
+				    <a href="#" id="booking-page">전시회 예약</a><br>
+			        <a href="#" id="user-page">유저 페이지</a><br>
 				</div>
 			</div>
 		</div>
 	</form>
 	</div>
-
         
 <script src="<%=application.getContextPath() %>/resources/brd/js/brd.js"></script>
 <script src="<%=application.getContextPath() %>/resources/shw/js/shw.js"></script>
+<script src="<%=application.getContextPath() %>/resources/bkg/js/bkg.js"></script>
+<script src="<%=application.getContextPath() %>/resources/uss/js/uss.js"></script>
 <script src="<%=application.getContextPath() %>/resources/cmm/js/cmm.js"></script>
 <script>
     	cmm.init(`<%=application.getContextPath() %>`)

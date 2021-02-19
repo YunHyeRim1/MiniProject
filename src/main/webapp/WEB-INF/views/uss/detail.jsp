@@ -58,12 +58,13 @@ body {
   border-radius: 3px;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  box-sizing: border-box;
 }
 
 label {
@@ -174,49 +175,67 @@ h3 {
   margin-right: 0;
   font-weight: bold;
 }
+.goHome-btn {
+  background-color: #467575;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.goHome-btn:hover {
+  background-color: #2F4F4F;
+}
+#btn-group button{
+	border: 2px solid #467575;
+	background-color: rgba(0,0,0,0);
+	color: #467575;
+	padding: 10px 20px;
+ 		font-size: 15px;
+ 		cursor: pointer;
+ 		border-radius: 8px;
+}
+#btn-group button:hover{
+	color: white;
+	background-color: #2F4F4F;
+}
 </style>
 
-<h2>상세보기</h2>
+<button type="button" class="goHome-btn" id="go-home"><i class="fa fa-home"></i></button>
+
+<h2>마이페이지</h2>
 <div class="row">
   <div class="col-75">
     <div class="container">
       <form>
       <div class="col-50">
-      		<p style="text-align:right;"><a href="#" id="go-home">홈으로</a></p>
-            <h3 style="text-align:center;">예약상품 정보</h3>
-            <label for="stitle">예약번호</label>
-            <p style="font-size:15px; color:gray;" id="bNum"></p><hr color="#DCDCDC">
-            <label for="stitle">전시명</label>
-            <p style="font-size:15px; color:gray;" id="sTitle"></p><hr color="#DCDCDC">
-            <label for="sdate">일시</label>
-            <p style="font-size:15px; color:gray;" id="sDate"></p><hr color="#DCDCDC">
-            <label for="slocation">장소</label>
-            <p style="font-size:15px; color:gray;" id="sLocation"></p><hr color="#DCDCDC">
-            <label for="sprice">가격</label>
-            <p style="font-size:15px; color:gray;" id="sPrice"></p><hr color="#DCDCDC"><br>
-          </div>      	
-          <div class="col-50">
-            <h3 style="text-align:center;">예약자 정보</h3>
-            <label for="fname"><i class="fa fa-user"></i> 예약자ID </label>
-            <p style="font-size:15px; color:gray;" id="bId"></p><hr color="#DCDCDC">
-            <label for="fname"><i class="fa fa-user"></i> 예약자명 </label>
-            <p style="font-size:15px; color:gray;" id="bName"></p><hr color="#DCDCDC">
-            <label for="email"><i class="fa fa-envelope"></i> 이메일 </label>
-            <p style="font-size:15px; color:gray;" id="bEmail"></p><hr color="#DCDCDC">
-            <label for="adr"><i class="fa fa-address-card-o"></i> 전화번호 </label>
-            <p style="font-size:15px; color:gray;" id="bPnumber"></p><hr color="#DCDCDC">       
-        </div>
-        <table style="margin-left: auto; margin-right: auto;"><tbody><tr id="multi-btn">
-		
-		</tr></tbody></table>
+          <h3>내정보</h3>
+          <label for="stitle">아이디</label>
+          <p style="font-size:15px; color:gray;" id="userid"></p><hr color="#DCDCDC">
+          <label for="stitle">비밀번호</label>
+          <p style="font-size:15px; color:gray;" id="password"></p><hr color="#DCDCDC">
+          <label for="sdate">이름</label>
+          <p style="font-size:15px; color:gray;" id="username"></p><hr color="#DCDCDC">
+          <label for="slocation">이메일</label>
+          <p style="font-size:15px; color:gray;" id="email"></p><hr color="#DCDCDC">
+          <label for="slocation">성별</label>
+          <p style="font-size:15px; color:gray;" id="gender"></p><hr color="#DCDCDC">
+          <label for="slocation">생년월일</label>
+          <p style="font-size:15px; color:gray;" id="birthday"></p><hr color="#DCDCDC">
+          <label for="sprice">전화번호</label>
+          <p style="font-size:15px; color:gray;" id="phoneNumber"></p><hr color="#DCDCDC"><br>
+       </div>      	
+
+	    <div id="btn-group" class="clearfix" style="text-align: center">
+	      <div id="toggle"></div>
+	    </div>
 
       </form>
     </div>
   </div>
 </div>
-<script src="${bkg}/js/bkg.js"></script>
-<script src="${cmm}/js/cmm.js"></script>
+<script src="${uss}/js/uss.js"></script>
 <script>
-	bkg.detail(`${ctx}`)
-	$('#go-home').click(function() {cmm.goHome(`${ctx}`)})
+	uss.detail(`${ctx}`)
+	$('#go-home').click(function() {uss.goHome(`${ctx}`)})
 </script>

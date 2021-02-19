@@ -16,13 +16,4 @@ public class UserService {
         return userMapper.insert(user);
     }
 
-	public int insertMany(int count) {
-		var list = new ArrayList<User>();
-		User m = null;
-		for(int i=0; i< count; i++) {
-			m = dummy.makeUser();
-			list.add(m);
-		}
-		return userMapper.insertMany(list);
-	}
 }

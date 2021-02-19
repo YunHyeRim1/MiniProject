@@ -13,17 +13,20 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-button {
-  background-color: #4CAF50;
+.btn {
+  background-color: #467575;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 12px;
+  margin: 10px 0;
   border: none;
-  cursor: pointer;
   width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
 }
-button:hover {
-  opacity: 0.8;
+
+.btn:hover {
+  background-color: #2F4F4F;
 }
 .cancelbtn {
   width: auto;
@@ -55,32 +58,38 @@ span.psw {
      width: 100%;
   }
 }
+.goHome-btn {
+  background-color: #467575;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.goHome-btn:hover {
+  background-color: #2F4F4F;
+}
 </style>
 
+<button type="button" class="goHome-btn" id="go-home"><i class="fa fa-home"></i></button>
 <div>
   <div class="imgcontainer">
     <img style="width:100px;height:100px" src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="uname"><b>UserId</b></label>
-    <input type="text" placeholder="Enter Username" id="uid" value="a@test.com" required>
+    <label for="uname"><b>아이디</b></label>
+    <input type="text" placeholder="아이디를 입력하세요." id="uid" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" id="pwd" value="1" required>
+    <label for="psw"><b>패스워드</b></label>
+    <input type="password" placeholder="패스워드를 입력하세요." id="pwd" required>
         
-    <button id="login-btn">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+    <button id="login-btn" class="btn">로그인</button>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
 </div>
 <script src="${uss}/js/uss.js"></script>
 <script>
 	$(`#login-btn`).click(function() {uss.login(`${ctx}`)})
+	$('#go-home').click(function() {uss.goHome(`${ctx}`)})
 </script>
